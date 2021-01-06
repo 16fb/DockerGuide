@@ -1,4 +1,5 @@
-# Installing Docker On Linux
+# Installing Docker On Ubuntu
+Install Docker Daemon on Ubuntu
 ## Original Guide
 [Original Docker Documentaion](https://docs.docker.com/engine/install/ubuntu/)
 
