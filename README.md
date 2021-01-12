@@ -36,3 +36,11 @@ In essence, we can put our setup into the container (such as installing dependac
 The most popular containerisation software is [Docker](https://en.wikipedia.org/wiki/Docker_(software)). <br>
 However for High Performance Computing(HPC) in scientific context, [Singularity](https://en.wikipedia.org/wiki/Singularity_(software)) is a popular option. <br>
 
+
+
+# TODO STUFF TO WRITE
+DockerHub
+.dockerignore
+docker buildx
+diff arch
+GPU support in containers.
