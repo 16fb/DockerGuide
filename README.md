@@ -68,7 +68,7 @@ Official Guide: [Docker Hub guide](https://docs.docker.com/docker-hub/)
 Docker has an official naming scheme, you use this push and pull docker images.   \
 * `<docker_ID>/<repo_name>:<desired_tag>`
 
-### Pulling from repo:
+### Pull from repo:
 * `docker pull <docker_ID>/<repo_name>:<desired_tag>`
 * `docker pull hello-world`
 
@@ -88,7 +88,7 @@ Pull a specific image, specify image hash:
 ### Push to repo:
 Build your image:
 * `docker build -t <your_docker_ID>/<your_repo_name>:<desired_tag> .`
-* `docker build -t 16fb/deepheadpose:ZX .`
+* `docker build -t 16fb/deepheadpose:ZX .`  
 Ensure your docker image follows DockerHub format, if not retag your image.
 
 Push to DockerHub:
@@ -96,7 +96,7 @@ Push to DockerHub:
 * `docker push 16fb/deepheadpose:ZX`
 
 # TODO STUFF TO WRITE
-DockerHub
+DockerHub  
 docker and WSL2
 how docker takes up space on your computer in windows
 docker layers
