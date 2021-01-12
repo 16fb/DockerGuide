@@ -51,13 +51,83 @@ However for High Performance Computing(HPC) in scientific context, [Singularity]
 
 ### How docker is used, usually.
 1. Define your `dockerfile`, define how you want your image to be built.
-2. Build you image, usually takes awhile.
+2. Build your image, usually takes awhile.
 3. Obtain completed docker image.
 4. Run the docker image locally.
 5. Push docker image to DockerHub.
 6. Pull docker image on machine 2.
 7. Run the docker image on machine 2.
-### Why can this work? 
+
+## Building + Running docker containers 
+People have made many guides, heres some of them, find other favourites
+* [Learning docker by making web app](https://youtu.be/gAkwW2tuIqE)
+* [Docker page official guide](https://docs.docker.com/get-started/)
+* Pull and run the basic docker container [hello-world](https://hub.docker.com/_/hello-world?tab=tags&page=1&ordering=last_updated)
+
+When in doubt, ask the reference:
+* https://docs.docker.com/engine/reference/run/
+
+### Building Docker Image
+TODO: Best pratices
+TODO: how image layers work.
+
+### Typical Docker Commands
+TODO: all the commands
+
+List of all docker commands:
+[Reference](https://docs.docker.com/engine/reference/run/)
+
+docker run:
+* Run a container
+
+docker stop:
+* Stop a running container
+
+docker exec:
+* runs a new command in a running container
+
+docker build:
+
+docker pull:
+
+docker push:
+
+
+docker ps:
+
+docker images:
+
+docker image:
+
+docker image rm:
+
+
+docker save:    
+
+docker load:
+
+
+docker buildx:
+
+docker commit:
+
+
+
+## Why can docker work / how docker works internally.
+Instruction Set Architecture:
+* Ensures CPU with the same architecture will be able to run the same software.
+[Wiki](https://en.wikipedia.org/wiki/Instruction_set_architecture)  
+
+How the magic works:
+* Programs are compiled to only run on 1 Specific OS and 1 Specific Architecture.
+* Docker daemon abstracts away the Operating System -> OS-level virtualisation.
+* Therefore, **as long architecture is the same, docker image can run.**
+### WHAT YOU NEED TO KNOW
+As long architecture is the same, Machine will be able to run the docker image.
+If not, have to use a VM or emulation technique.
+
+Proper References for Deeper Reading:
+* [Short Youtube series digging around docker](https://www.youtube.com/watch?v=-YnMr1lj4Z8)
 
 ## Using DockerHub
 Use dockerhub to upload containers for future use and easy access.
@@ -95,12 +165,18 @@ Push to DockerHub:
 * `docker push <your_docker_ID>/<your_repo_name>:<desired_tag>`
 * `docker push 16fb/deepheadpose:ZX`
 
+## Moving docker images install location on Windows 10 using WSL2
+Follow this [StackOverflow Guide](https://stackoverflow.com/a/63752264/11652692).   
+Very usefull and helpful when you C: drive is out of space.
 # TODO STUFF TO WRITE
-DockerHub  
-docker and WSL2
-how docker takes up space on your computer in windows
+DockerHub -> Done  
+Building + Running Docker containers
+docker and WSL2 
+typical docker commands:
+image management commands:
+how docker takes up space on your computer in windows -> referenced guide
 docker layers
 .dockerignore
 docker buildx
-diff arch
+diff arch -> Mentioned
 GPU support in containers.
