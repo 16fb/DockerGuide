@@ -68,50 +68,96 @@ When in doubt, ask the reference:
 * https://docs.docker.com/engine/reference/run/
 
 ### Building Docker Image
-TODO: Best pratices
-TODO: how image layers work.
+How Image Layers work:
+* After each dockerfile command, a new read-only layer is created 
+* Final top layer is a modifiable layer
+* Idea: different images can share lower level layers.
 
+Best Practices:
+* Reduce number of dockerfile commands, put more commands into same dockerfile command.
+* If unsure, Test commands using `docker exec / run`, write down all commands used.
+* Then, implement commands in dockerfile.
 ### Typical Docker Commands
-TODO: all the commands
-
-List of all docker commands:
+List of all common docker commands:
 [Reference](https://docs.docker.com/engine/reference/run/)
 
 docker run:
 * Run a container
+* `$ docker run [OPTIONS] IMAGE[:TAG|@DIGEST] [COMMAND] [ARG...]`  
+[Reference](https://docs.docker.com/engine/reference/run/)
 
 docker stop:
 * Stop a running container
+* `docker stop [OPTIONS] CONTAINER`  
+[Reference](https://docs.docker.com/engine/reference/commandline/stop/)
 
 docker exec:
 * runs a new command in a running container
+* `docker exec [OPTIONS] CONTAINER COMMAND [ARG...]`
+[Reference](https://docs.docker.com/engine/reference/commandline/exec/)
 
 docker build:
+* Build an image from dockerfile
+* `docker build [OPTIONS] PATH | URL | -`
+[Reference](https://docs.docker.com/engine/reference/commandline/build/)
 
 docker pull:
+* Pull an image or a repository from a registry
+* `docker pull [OPTIONS] NAME[:TAG|@DIGEST]`
+[Reference](https://docs.docker.com/engine/reference/commandline/pull/)
 
 docker push:
+* Push an image or a repository to a registry
+* `docker push [OPTIONS] NAME[:TAG]`
+[Reference](https://docs.docker.com/engine/reference/commandline/push/)
 
+**Container and Image management**
 
 docker ps:
+* List containers
+* `docker ps [OPTIONS]`
+[Reference](https://docs.docker.com/engine/reference/commandline/ps/)
 
 docker images:
+* List images
+* `docker images [OPTIONS] [REPOSITORY[:TAG]]`
+[Reference](https://docs.docker.com/engine/reference/commandline/images/)
 
 docker image:
+* Manage images
+* `docker image COMMAND`
+[Reference](https://docs.docker.com/engine/reference/commandline/image/)
 
 docker image rm:
+* Remove one or more images
+* `docker image rm [OPTIONS] IMAGE [IMAGE...]`
+[Reference](https://docs.docker.com/engine/reference/commandline/image_rm/)
 
+**Save and Load image from .tar file**
 
-docker save:    
+docker save:
+* Save one or more images to a tar archive (streamed to STDOUT by default)
+* `docker save [OPTIONS] IMAGE [IMAGE...]`
+[Reference](https://docs.docker.com/engine/reference/commandline/save/)
 
 docker load:
+* Load an image from a tar archive or STDIN
+* `docker load [OPTIONS]`
+[Reference](https://docs.docker.com/engine/reference/commandline/load/)
 
+**Advanced**
 
 docker buildx:
+* Build with BuildKit, X-perimental builder. Typically used for cross compilation
+* Complex, but good to use for x-compilation. Double check containers are proper architecture.
+* `docker buildx COMMAND`
+[Reference](https://docs.docker.com/engine/reference/commandline/buildx/)
 
 docker commit:
-
-
+* Create a new image from a container’s changes, aka save a running container as a new image.
+* Not Reccomended, its reccomended that changes to containers be done in a dockerfile for consistency.
+* `docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]`
+[Reference](https://docs.docker.com/engine/reference/commandline/commit/)
 
 ## Why can docker work / how docker works internally.
 Instruction Set Architecture:
@@ -168,15 +214,25 @@ Push to DockerHub:
 ## Moving docker images install location on Windows 10 using WSL2
 Follow this [StackOverflow Guide](https://stackoverflow.com/a/63752264/11652692).   
 Very usefull and helpful when you C: drive is out of space.
+
+
+## Buildx
+Experimental builder tool, can be used to cross compile and put multiple images into same tag on dockerhub.  
+Has other uses as well.
+
+Some Guides to get started:
+* [Docker official guide](https://docs.docker.com/docker-for-mac/multi-arch/)
+* [Guide i personally started learning from](https://www.padok.fr/en/blog/multi-architectures-docker-iot)
+* [Guy who explains multi-arch](https://medium.com/icetek/understanding-how-docker-multi-arch-images-work-9a7e035e2868)
 # TODO STUFF TO WRITE
 DockerHub -> Done  
-Building + Running Docker containers
+Building + Running Docker containers -> Simple one done
 docker and WSL2 
-typical docker commands:
-image management commands:
+typical docker commands: -> done
+image management commands: -> done
 how docker takes up space on your computer in windows -> referenced guide
-docker layers
+docker layers -> done
 .dockerignore
-docker buildx
+docker buildx -> done
 diff arch -> Mentioned
 GPU support in containers.
