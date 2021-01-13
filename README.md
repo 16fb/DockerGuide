@@ -5,7 +5,6 @@ DISCLAIMER:
 * This is basically a guide i would write for the struggling poly kid i was 4 mth ago.
 
 ### Excelent Resources / other guides.
-* 
 
 ## Containers
 [Containers](https://en.wikipedia.org/wiki/OS-level_virtualization) allows for OS-level virtualisation.  
@@ -243,17 +242,17 @@ As of writing(13/1/2021), stable version of WSL2 with docker does not support GP
 There is a preview / insider build for windows that does allow GPU usage.  
 Hopefully by the time you read this, the preview build will have been pushed to live.  
 
-Ubuntu/Mac:
+Ubuntu/Mac:  
 Possible, refer to `dockerOnUbuntu.md` and `dockerWithGPUOnUbuntu.md` for more details.
 # TODO STUFF TO WRITE
-DockerHub -> Done  
-Building + Running Docker containers -> Simple one done
-docker and WSL2 
-typical docker commands: -> done
-image management commands: -> done
-how docker takes up space on your computer in windows -> referenced guide
-docker layers -> done
-.dockerignore -> mentioned somewhere
-docker buildx -> done
-diff arch -> Mentioned
-GPU support in containers. -> done
+DockerHub -> Done    
+Building + Running Docker containers -> Simple one done  
+docker and WSL2   
+typical docker commands: -> done  
+image management commands: -> done  
+how docker takes up space on your computer in windows -> referenced guide  
+docker layers -> done  
+.dockerignore -> mentioned somewhere  
+docker buildx -> done  
+diff arch -> Mentioned  
+GPU support in containers. -> done  
