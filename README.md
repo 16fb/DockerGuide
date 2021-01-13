@@ -8,8 +8,9 @@ DISCLAIMER:
 * 
 
 ## Containers
-[Containers](https://en.wikipedia.org/wiki/OS-level_virtualization) allows for OS-level virtualisation. <br>
-Basically its a Virtual Machine that virtualises processes and not the whole computer, which makes it much more efficient.
+[Containers](https://en.wikipedia.org/wiki/OS-level_virtualization) allows for OS-level virtualisation.  
+Basically its a Virtual Machine that virtualises processes and not the whole computer, which makes it much more efficient.  
+Containers were initially made for Linux, therefore most containers will be linux based.
 
 ## Benefit + Use case of containers
 Main benefits:
@@ -58,6 +59,15 @@ However for High Performance Computing(HPC) in scientific context, [Singularity]
 6. Pull docker image on machine 2.
 7. Run the docker image on machine 2.
 
+### WSL2
+Windows Subsystem for Linux, basically aims to have windows be able to run Linux "natively".  
+As of WSL2, they had decided on using a lightweight VM.  
+
+I would reccomend you use this to run containers, good choice if you do not have a spare laptop with linux to use.  
+
+Resources:
+* [Official Windows Guide](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
+* [Another Guide](https://www.sitepoint.com/wsl2/)
 ## Building + Running docker containers 
 People have made many guides, heres some of them, find other favourites
 * [Learning docker by making web app](https://youtu.be/gAkwW2tuIqE)
@@ -93,56 +103,56 @@ docker stop:
 
 docker exec:
 * runs a new command in a running container
-* `docker exec [OPTIONS] CONTAINER COMMAND [ARG...]`
+* `docker exec [OPTIONS] CONTAINER COMMAND [ARG...]`  
 [Reference](https://docs.docker.com/engine/reference/commandline/exec/)
 
 docker build:
 * Build an image from dockerfile
-* `docker build [OPTIONS] PATH | URL | -`
+* `docker build [OPTIONS] PATH | URL | -`  
 [Reference](https://docs.docker.com/engine/reference/commandline/build/)
 
 docker pull:
 * Pull an image or a repository from a registry
-* `docker pull [OPTIONS] NAME[:TAG|@DIGEST]`
+* `docker pull [OPTIONS] NAME[:TAG|@DIGEST]`  
 [Reference](https://docs.docker.com/engine/reference/commandline/pull/)
 
 docker push:
 * Push an image or a repository to a registry
-* `docker push [OPTIONS] NAME[:TAG]`
+* `docker push [OPTIONS] NAME[:TAG]`  
 [Reference](https://docs.docker.com/engine/reference/commandline/push/)
 
 **Container and Image management**
 
 docker ps:
 * List containers
-* `docker ps [OPTIONS]`
+* `docker ps [OPTIONS]`  
 [Reference](https://docs.docker.com/engine/reference/commandline/ps/)
 
 docker images:
 * List images
-* `docker images [OPTIONS] [REPOSITORY[:TAG]]`
+* `docker images [OPTIONS] [REPOSITORY[:TAG]]`  
 [Reference](https://docs.docker.com/engine/reference/commandline/images/)
 
 docker image:
 * Manage images
-* `docker image COMMAND`
+* `docker image COMMAND`  
 [Reference](https://docs.docker.com/engine/reference/commandline/image/)
 
 docker image rm:
 * Remove one or more images
-* `docker image rm [OPTIONS] IMAGE [IMAGE...]`
+* `docker image rm [OPTIONS] IMAGE [IMAGE...]`  
 [Reference](https://docs.docker.com/engine/reference/commandline/image_rm/)
 
 **Save and Load image from .tar file**
 
 docker save:
 * Save one or more images to a tar archive (streamed to STDOUT by default)
-* `docker save [OPTIONS] IMAGE [IMAGE...]`
+* `docker save [OPTIONS] IMAGE [IMAGE...]`  
 [Reference](https://docs.docker.com/engine/reference/commandline/save/)
 
 docker load:
 * Load an image from a tar archive or STDIN
-* `docker load [OPTIONS]`
+* `docker load [OPTIONS]`  
 [Reference](https://docs.docker.com/engine/reference/commandline/load/)
 
 **Advanced**
@@ -150,13 +160,13 @@ docker load:
 docker buildx:
 * Build with BuildKit, X-perimental builder. Typically used for cross compilation
 * Complex, but good to use for x-compilation. Double check containers are proper architecture.
-* `docker buildx COMMAND`
+* `docker buildx COMMAND`  
 [Reference](https://docs.docker.com/engine/reference/commandline/buildx/)
 
 docker commit:
 * Create a new image from a container’s changes, aka save a running container as a new image.
 * Not Reccomended, its reccomended that changes to containers be done in a dockerfile for consistency.
-* `docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]`
+* `docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]`  
 [Reference](https://docs.docker.com/engine/reference/commandline/commit/)
 
 ## Why can docker work / how docker works internally.
@@ -169,7 +179,7 @@ How the magic works:
 * Docker daemon abstracts away the Operating System -> OS-level virtualisation.
 * Therefore, **as long architecture is the same, docker image can run.**
 ### WHAT YOU NEED TO KNOW
-As long architecture is the same, Machine will be able to run the docker image.
+As long architecture is the same, Machine will be able to run the docker image.  
 If not, have to use a VM or emulation technique.
 
 Proper References for Deeper Reading:
@@ -224,6 +234,17 @@ Some Guides to get started:
 * [Docker official guide](https://docs.docker.com/docker-for-mac/multi-arch/)
 * [Guide i personally started learning from](https://www.padok.fr/en/blog/multi-architectures-docker-iot)
 * [Guy who explains multi-arch](https://medium.com/icetek/understanding-how-docker-multi-arch-images-work-9a7e035e2868)
+
+
+
+## GPU Support
+Windows 10:  
+As of writing(13/1/2021), stable version of WSL2 with docker does not support GPU Usage(GPU Passthrough).  
+There is a preview / insider build for windows that does allow GPU usage.  
+Hopefully by the time you read this, the preview build will have been pushed to live.  
+
+Ubuntu/Mac:
+Possible, refer to `dockerOnUbuntu.md` and `dockerWithGPUOnUbuntu.md` for more details.
 # TODO STUFF TO WRITE
 DockerHub -> Done  
 Building + Running Docker containers -> Simple one done
@@ -232,7 +253,7 @@ typical docker commands: -> done
 image management commands: -> done
 how docker takes up space on your computer in windows -> referenced guide
 docker layers -> done
-.dockerignore
+.dockerignore -> mentioned somewhere
 docker buildx -> done
 diff arch -> Mentioned
-GPU support in containers.
+GPU support in containers. -> done
